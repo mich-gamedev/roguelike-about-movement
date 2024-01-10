@@ -1,0 +1,95 @@
+{
+	"categories": [
+		{
+			"uuid": "75d57c13-201f-47c3-9efc-74603efc7159",
+			"title": "Task",
+			"color": "70bafa"
+		},
+		{
+			"uuid": "40698ba3-3be7-4404-8df7-ab8ed58a7ad2",
+			"title": "Bug",
+			"color": "ff0000"
+		},
+		{
+			"uuid": "24f17c4d-b07c-455c-b381-bcfba74ab224",
+			"title": "Concept",
+			"color": "ebcb8b"
+		},
+		{
+			"uuid": "865773e9-90a8-4b2d-9dc3-e1f9fa7f6a16",
+			"title": "Important",
+			"color": "b100f3"
+		}
+	],
+	"stages": [
+		{
+			"uuid": "6a040c0f-9907-4633-b2c4-678806feed5d",
+			"title": "Doing",
+			"tasks": []
+		},
+		{
+			"uuid": "928661bc-e78a-41a4-87d0-7f3e4f267070",
+			"title": "Finished",
+			"tasks": [
+				"63506a13-dc19-49f9-9bf8-3a46082d2668"
+			]
+		},
+		{
+			"uuid": "a6c0bc0d-2937-4322-8dec-97eae6fab2f3",
+			"title": "To Do",
+			"tasks": []
+		},
+		{
+			"uuid": "f7623589-452f-42e8-bd92-b92c605159a5",
+			"title": "Polishing",
+			"tasks": []
+		}
+	],
+	"tasks": [
+		{
+			"uuid": "63506a13-dc19-49f9-9bf8-3a46082d2668",
+			"title": "Make basic player scene with similar physics to old version",
+			"description": "",
+			"category": "75d57c13-201f-47c3-9efc-74603efc7159",
+			"steps": [
+				{
+					"details": "import animations",
+					"done": true
+				},
+				{
+					"details": "set up characterbody script",
+					"done": true
+				},
+				{
+					"details": "make health component",
+					"done": true
+				},
+				{
+					"details": "make hurtbox component",
+					"done": true
+				}
+			]
+		},
+		{
+			"uuid": "9a7d29c6-f84e-43e3-adcd-110cbe0608db",
+			"title": "Gun Components",
+			"description": "",
+			"category": "75d57c13-201f-47c3-9efc-74603efc7159",
+			"steps": []
+		}
+	],
+	"layout": {
+		"columns": [
+			[
+				"a6c0bc0d-2937-4322-8dec-97eae6fab2f3"
+			],
+			[
+				"6a040c0f-9907-4633-b2c4-678806feed5d"
+			],
+			[
+				"928661bc-e78a-41a4-87d0-7f3e4f267070",
+				"f7623589-452f-42e8-bd92-b92c605159a5"
+			]
+		]
+	}
+}

@@ -1,0 +1,278 @@
+[gd_scene load_steps=32 format=3 uid="uid://dal1e3o0xwrx8"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_iulfh"]
+[ext_resource type="Texture2D" uid="uid://c1dbsekw1iewm" path="res://assets/player/player.png" id="2_h81pg"]
+[ext_resource type="Texture2D" uid="uid://c04qpxwfgftux" path="res://assets/particles/Dust.png" id="3_wxrbk"]
+[ext_resource type="Script" path="res://obj/common/GunPivot.gd" id="5_75hyt"]
+[ext_resource type="Texture2D" uid="uid://bk5h28n5cuaey" path="res://assets/player/guns/basic_pistol.png" id="5_p6p4y"]
+[ext_resource type="PackedScene" uid="uid://c0e0frcnib8rm" path="res://obj/bullets/player_bullet.tscn" id="7_k7tcr"]
+[ext_resource type="Script" path="res://obj/common/FireBullet.gd" id="7_w8bbn"]
+[ext_resource type="PackedScene" uid="uid://b4dar5tugqlug" path="res://obj/particles/bullet_particle.tscn" id="8_kqmgt"]
+[ext_resource type="Script" path="res://obj/common/Health.gd" id="9_2iwwk"]
+[ext_resource type="Script" path="res://obj/common/Hitbox.gd" id="10_mbt75"]
+[ext_resource type="PackedScene" uid="uid://cmdq2y0uj10ky" path="res://obj/bullets/friction_bullet.tscn" id="11_bxjhv"]
+
+[sub_resource type="Curve" id="Curve_3nes3"]
+_data = [Vector2(0, 0.89011), 0.0, 1.11662, 0, 0, Vector2(1, 0), -0.118343, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2awe6"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(72, 72, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af7ed"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(48, 72, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b758t"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hispn"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vrtw"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(0, 72, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vrw7"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddcbg"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpi6p"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfc6n"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3siy"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di1t6"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ravku"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ebdr"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6a8u"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(24, 72, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_60o4o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2awe6")
+}],
+"loop": true,
+"name": &"Against Wall",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_af7ed")
+}],
+"loop": true,
+"name": &"BG Slide",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b758t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hispn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vrtw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hispn")
+}],
+"loop": true,
+"name": &"Fall",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vrw7")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddcbg")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpi6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfc6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3siy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di1t6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ravku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ebdr")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6a8u")
+}],
+"loop": true,
+"name": &"Wall Slide",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t114a"]
+radius = 6.0
+height = 20.0
+
+[sub_resource type="GDScript" id="GDScript_kknba"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qd36n"]
+size = Vector2(13, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mb10i"]
+size = Vector2(8, 16)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_iulfh")
+air_friction = 1200
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 11)
+amount = 10
+lifetime = 1.25
+lifetime_randomness = 0.6
+texture = ExtResource("3_wxrbk")
+emission_shape = 1
+emission_sphere_radius = 3.0
+spread = 180.0
+gravity = Vector2(0, 12)
+initial_velocity_max = 20.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+scale_amount_curve = SubResource("Curve_3nes3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_60o4o")
+animation = &"Idle"
+autoplay = "Idle"
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": false,
+"source": "res://assets/player/player.ase"
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1, 2)
+shape = SubResource("CapsuleShape2D_t114a")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = SubResource("GDScript_kknba")
+
+[node name="SlidingWallCollider" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlidingWallCollider"]
+visible = false
+position = Vector2(-0.5, 6)
+shape = SubResource("RectangleShape2D_qd36n")
+debug_color = Color(0.733333, 0.341176, 0.823529, 0)
+
+[node name="GunContainer" type="Marker2D" parent="." node_paths=PackedStringArray("flip_actor")]
+script = ExtResource("5_75hyt")
+flip_actor = NodePath("..")
+
+[node name="Shotgun" type="Sprite2D" parent="GunContainer" node_paths=PackedStringArray("carrier", "cooldown_timer")]
+script = ExtResource("7_w8bbn")
+bullet = ExtResource("11_bxjhv")
+particle = ExtResource("8_kqmgt")
+cooldown = 0.6
+recoil = 30.0
+damage = 1
+speed = 500.0
+amount = 5
+carrier = NodePath("../..")
+cooldown_timer = NodePath("CooldownTimer")
+
+[node name="CooldownTimer" type="Timer" parent="GunContainer/Shotgun"]
+wait_time = 0.01
+one_shot = true
+autostart = true
+
+[node name="BasicPistol" type="Sprite2D" parent="GunContainer" node_paths=PackedStringArray("carrier", "cooldown_timer")]
+position = Vector2(20, -1)
+texture = ExtResource("5_p6p4y")
+offset = Vector2(-6, 1)
+script = ExtResource("7_w8bbn")
+bullet = ExtResource("7_k7tcr")
+particle = ExtResource("8_kqmgt")
+recoil = 30.0
+speed = 400.0
+carrier = NodePath("../..")
+cooldown_timer = NodePath("CooldownTimer")
+
+[node name="CooldownTimer" type="Timer" parent="GunContainer/BasicPistol"]
+wait_time = 0.01
+one_shot = true
+autostart = true
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("9_2iwwk")
+
+[node name="Hitbox" type="Area2D" parent="Health" node_paths=PackedStringArray("health_actor")]
+collision_layer = 16
+collision_mask = 64
+script = ExtResource("10_mbt75")
+health_actor = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Health/Hitbox"]
+position = Vector2(-1, 4)
+shape = SubResource("RectangleShape2D_mb10i")
+debug_color = Color(0.988235, 0, 0.305882, 0.152941)
+
+[connection signal="body_entered" from="SlidingWallCollider" to="." method="_on_sliding_wall_entered"]
+[connection signal="body_exited" from="SlidingWallCollider" to="." method="_on_sliding_wall_exited"]
+[connection signal="child_entered_tree" from="GunContainer" to="GunContainer" method="_on_child_entered_tree"]
+[connection signal="area_entered" from="Health/Hitbox" to="Health/Hitbox" method="_on_area_entered"]
+[connection signal="area_exited" from="Health/Hitbox" to="Health/Hitbox" method="_on_area_exited"]

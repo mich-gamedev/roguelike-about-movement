@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0e0frcnib8rm"]
+
+[ext_resource type="Script" path="res://obj/bullets/Bullet.gd" id="1_a168m"]
+[ext_resource type="Texture2D" uid="uid://gji0b3gyn3xp" path="res://assets/projectiles/playerbullet1.png" id="1_s8uyn"]
+[ext_resource type="Texture2D" uid="uid://b0o3c6rj2psy4" path="res://assets/projectiles/playerbullet2.png" id="2_fi250"]
+[ext_resource type="Script" path="res://obj/bullets/HurtBox.gd" id="4_tsr7n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_okitb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_s8uyn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fi250")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cee05"]
+size = Vector2(6, 6)
+
+[node name="PlayerBullet" type="CharacterBody2D" node_paths=PackedStringArray("screen_delete_actor")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_a168m")
+screen_delete_actor = NodePath("VisibleOnScreenNotifier2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_okitb")
+frame_progress = 0.0724492
+metadata/_aseprite_wizard_config_ = {
+"layer": "Layer",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": true,
+"source": "res://assets/projectiles/playerbullet1.ase"
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 32
+script = ExtResource("4_tsr7n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_cee05")
+debug_color = Color(1, 0, 0.141176, 0)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-32, -32, 64, 64)
