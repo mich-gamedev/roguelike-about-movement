@@ -6,7 +6,7 @@
 [sub_resource type="TileSet" id="TileSet_ccc4i"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dkk4c"]
-distance = -1504.0
+distance = -1472.0
 
 [node name="world" type="Node2D"]
 

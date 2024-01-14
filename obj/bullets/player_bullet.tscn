@@ -1,36 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0e0frcnib8rm"]
+[gd_scene load_steps=5 format=3 uid="uid://c0e0frcnib8rm"]
 
 [ext_resource type="Script" path="res://obj/bullets/Bullet.gd" id="1_a168m"]
-[ext_resource type="Texture2D" uid="uid://gji0b3gyn3xp" path="res://assets/projectiles/playerbullet1.png" id="1_s8uyn"]
-[ext_resource type="Texture2D" uid="uid://b0o3c6rj2psy4" path="res://assets/projectiles/playerbullet2.png" id="2_fi250"]
+[ext_resource type="SpriteFrames" uid="uid://cyoso6fdlqtwx" path="res://obj/bullets/player_bullet.tres" id="2_gl4xe"]
 [ext_resource type="Script" path="res://obj/bullets/HurtBox.gd" id="4_tsr7n"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_okitb"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_s8uyn")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_fi250")
-}],
-"loop": true,
-"name": &"default",
-"speed": 12.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cee05"]
 size = Vector2(6, 6)
 
-[node name="PlayerBullet" type="CharacterBody2D" node_paths=PackedStringArray("screen_delete_actor")]
+[node name="PlayerBullet" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_a168m")
-screen_delete_actor = NodePath("VisibleOnScreenNotifier2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_okitb")
+sprite_frames = ExtResource("2_gl4xe")
 frame_progress = 0.0724492
 metadata/_aseprite_wizard_config_ = {
 "layer": "Layer",

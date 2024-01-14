@@ -25,7 +25,9 @@
 		{
 			"uuid": "6a040c0f-9907-4633-b2c4-678806feed5d",
 			"title": "Doing",
-			"tasks": []
+			"tasks": [
+				"4cd394e8-f688-40b0-b619-f100d2f33822"
+			]
 		},
 		{
 			"uuid": "928661bc-e78a-41a4-87d0-7f3e4f267070",
@@ -37,7 +39,11 @@
 		{
 			"uuid": "a6c0bc0d-2937-4322-8dec-97eae6fab2f3",
 			"title": "To Do",
-			"tasks": []
+			"tasks": [
+				"3e23a507-b560-4ce2-8963-bf0219d2dfc8",
+				"c53e19d6-deea-45b9-8762-390db45c4f79",
+				"13950304-64c5-476b-a7dd-79171e28d7a5"
+			]
 		},
 		{
 			"uuid": "f7623589-452f-42e8-bd92-b92c605159a5",
@@ -76,6 +82,73 @@
 			"description": "",
 			"category": "75d57c13-201f-47c3-9efc-74603efc7159",
 			"steps": []
+		},
+		{
+			"uuid": "3e23a507-b560-4ce2-8963-bf0219d2dfc8",
+			"title": "Movement Mechanics",
+			"description": "noticed a noteable lack of fancy movement in roguelikes, so my idea is to make this game all about movement and using it to kill shit",
+			"category": "24f17c4d-b07c-455c-b381-bcfba74ab224",
+			"steps": [
+				{
+					"details": "movement upgrades",
+					"done": false
+				},
+				{
+					"details": "movement abilities",
+					"done": false
+				},
+				{
+					"details": "making enemies oriented for movement",
+					"done": false
+				},
+				{
+					"details": "make guns for movement",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "c53e19d6-deea-45b9-8762-390db45c4f79",
+			"title": "make bullet resource attachments",
+			"description": "",
+			"category": "75d57c13-201f-47c3-9efc-74603efc7159",
+			"steps": [
+				{
+					"details": "friction bullet",
+					"done": false
+				},
+				{
+					"details": "gravity bullet",
+					"done": false
+				},
+				{
+					"details": "accelerating bullet",
+					"done": false
+				},
+				{
+					"details": "scattering (random forces) bullet",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "13950304-64c5-476b-a7dd-79171e28d7a5",
+			"title": "Upgrade System",
+			"description": "concepts in progress, need more systems before(?)",
+			"category": "75d57c13-201f-47c3-9efc-74603efc7159",
+			"steps": []
+		},
+		{
+			"uuid": "4cd394e8-f688-40b0-b619-f100d2f33822",
+			"title": "rapidly scrolling causes alot of recoil",
+			"description": "",
+			"category": "40698ba3-3be7-4404-8df7-ab8ed58a7ad2",
+			"steps": [
+				{
+					"details": "add delay like 0.1 delay of not being able to fire on weapons",
+					"done": false
+				}
+			]
 		}
 	],
 	"layout": {

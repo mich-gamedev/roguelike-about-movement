@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BulletResource" load_steps=2 format=3 uid="uid://byea2iswkte4y"]
+
+[ext_resource type="Script" path="res://scripts/Resources/BulletResource.gd" id="1_67rac"]
+
+[resource]
+script = ExtResource("1_67rac")
+rotate_bullet = false
+delete_radius = Vector2(32, 32)
+properties = Array[Resource("res://scripts/Resources/BulletProperty.gd")]([])
+damage = 0
+speed = 0.0
+layer = 0
+mask = 0
+collider = Rect2(-3, -3, 6, 6)

@@ -16,14 +16,14 @@ extends CharacterBody2D
 @onready var slide_collider: Area2D = $SlidingWallCollider
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var particles: CPUParticles2D = $CPUParticles2D
-@onready var gun_pivot: GunContainer = $GunContainer
+@onready var gun_pivot: GunPivot = $GunContainer
 
 
 var friction: float
 var max_falling_speed : float
 var can_wall_jump : bool = false
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	input_control(delta)
 	
 	environment_control(delta)

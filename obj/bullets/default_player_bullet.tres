@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BulletResource" load_steps=3 format=3 uid="uid://b4kb1qjx2hwla"]
+
+[ext_resource type="Script" path="res://scripts/Resources/BulletResource.gd" id="1_32547"]
+[ext_resource type="SpriteFrames" uid="uid://cyoso6fdlqtwx" path="res://obj/bullets/player_bullet.tres" id="2_b6t50"]
+
+[resource]
+script = ExtResource("1_32547")
+texture = ExtResource("2_b6t50")
+rotate_bullet = false
+delete_radius = Vector2(32, 32)
+properties = Array[Resource("res://scripts/Resources/BulletProperty.gd")]([])
+damage = 1
+speed = 600.0
+layer = 0
+mask = 0
+collider = Rect2(-3, -3, 6, 6)
