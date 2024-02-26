@@ -1,0 +1,766 @@
+[gd_scene load_steps=83 format=3 uid="uid://dal1e3o0xwrx8"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_iulfh"]
+[ext_resource type="Texture2D" uid="uid://c1dbsekw1iewm" path="res://assets/player/player.png" id="2_h81pg"]
+[ext_resource type="Texture2D" uid="uid://c04qpxwfgftux" path="res://assets/particles/Dust.png" id="3_wxrbk"]
+[ext_resource type="Script" path="res://obj/common/GunPivot.gd" id="5_75hyt"]
+[ext_resource type="Texture2D" uid="uid://gappdiutfroq" path="res://assets/player/guns/shotgun.png" id="5_88cuu"]
+[ext_resource type="Resource" uid="uid://b4kb1qjx2hwla" path="res://obj/bullets/default_player_bullet.tres" id="7_1qdwn"]
+[ext_resource type="Script" path="res://scripts/Resources/BulletResource.gd" id="7_tb4bl"]
+[ext_resource type="Script" path="res://obj/common/FireBullet.gd" id="7_w8bbn"]
+[ext_resource type="Script" path="res://scripts/Resources/bullet_properties/friction_bullet.gd" id="8_2wodo"]
+[ext_resource type="SpriteFrames" uid="uid://cyoso6fdlqtwx" path="res://obj/bullets/player_bullet.tres" id="8_cs1iy"]
+[ext_resource type="Texture2D" uid="uid://bk5h28n5cuaey" path="res://assets/player/guns/basic_pistol.png" id="8_dpfb6"]
+[ext_resource type="PackedScene" uid="uid://b4cmqw6l1b42r" path="res://obj/particles/pistol.tscn" id="8_nvg4j"]
+[ext_resource type="Script" path="res://obj/common/Health.gd" id="8_v3qsh"]
+[ext_resource type="PackedScene" uid="uid://c0e0frcnib8rm" path="res://obj/bullets/player_bullet.tscn" id="9_menkm"]
+[ext_resource type="Script" path="res://obj/common/Hitbox.gd" id="9_qy0q1"]
+[ext_resource type="Texture2D" uid="uid://i048wsfruan1" path="res://assets/player/guns/smg.png" id="10_coud6"]
+[ext_resource type="Texture2D" uid="uid://c03218bdjm0om" path="res://assets/player/guns/chainsawedoff.png" id="11_kmfo7"]
+[ext_resource type="Texture2D" uid="uid://bw6tstjbm43px" path="res://assets/player/guns/sniper.png" id="11_l8h32"]
+[ext_resource type="Script" path="res://scripts/Resources/bullet_properties/MinimumBullet.gd" id="11_lvgbq"]
+[ext_resource type="Texture2D" uid="uid://mrsg2k0tekah" path="res://assets/player/guns/speaker.png" id="16_p11tl"]
+[ext_resource type="Texture2D" uid="uid://dgbahwa8l6sx6" path="res://assets/projectiles/pea.png" id="17_ckbf3"]
+[ext_resource type="Texture2D" uid="uid://b0fovy47tl387" path="res://assets/player/guns/snappeashooter.png" id="18_b0a5x"]
+[ext_resource type="Texture2D" uid="uid://cm625b7d02a16" path="res://assets/projectiles/spraypaint_smoke.png" id="19_v3w4g"]
+[ext_resource type="Script" path="res://scripts/Resources/bullet_properties/gravity_bullet.gd" id="19_ymrbc"]
+[ext_resource type="Texture2D" uid="uid://do42duh6nasw5" path="res://assets/projectiles/coin-Sheet.png" id="20_y2lps"]
+[ext_resource type="Texture2D" uid="uid://bk4kd4pgfvxbl" path="res://assets/player/guns/sunglasses.png" id="21_bb80m"]
+[ext_resource type="Script" path="res://scripts/Resources/bullet_properties/delete_bullet.gd" id="22_2omjx"]
+[ext_resource type="Texture2D" uid="uid://bakdf1dx8gfuj" path="res://assets/player/guns/spraypaint.png" id="22_6a76b"]
+[ext_resource type="Texture2D" uid="uid://cn5rqd7cmx6ai" path="res://assets/player/guns/arcadeshotgun.png" id="25_6qpsl"]
+[ext_resource type="Texture2D" uid="uid://bjtjfoqsntrya" path="res://assets/projectiles/arcadebullet.png" id="25_jeo0b"]
+[ext_resource type="Texture2D" uid="uid://cvjk2xd8yigid" path="res://assets/projectiles/bubble.png" id="27_s7y7l"]
+[ext_resource type="Texture2D" uid="uid://co05kr2e8g17y" path="res://assets/player/guns/poisonbubblegun.png" id="28_xq1e5"]
+
+[sub_resource type="Curve" id="Curve_3nes3"]
+_data = [Vector2(0, 0.89011), 0.0, 1.11662, 0, 0, Vector2(1, 0), -0.118343, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2awe6"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(72, 72, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af7ed"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(48, 72, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b758t"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hispn"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vrtw"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(0, 72, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vrw7"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddcbg"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpi6p"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfc6n"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3siy"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di1t6"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ravku"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ebdr"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6a8u"]
+atlas = ExtResource("2_h81pg")
+region = Rect2(24, 72, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_60o4o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2awe6")
+}],
+"loop": true,
+"name": &"Against Wall",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_af7ed")
+}],
+"loop": true,
+"name": &"BG Slide",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b758t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hispn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vrtw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hispn")
+}],
+"loop": true,
+"name": &"Fall",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vrw7")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ddcbg")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpi6p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfc6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3siy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_di1t6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ravku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ebdr")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6a8u")
+}],
+"loop": true,
+"name": &"Wall Slide",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t114a"]
+radius = 6.0
+height = 20.0
+
+[sub_resource type="GDScript" id="GDScript_kknba"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygscv"]
+size = Vector2(13, 12)
+
+[sub_resource type="Resource" id="Resource_54cwo"]
+script = ExtResource("8_2wodo")
+rate = -1000.0
+
+[sub_resource type="Resource" id="Resource_2lx0e"]
+script = ExtResource("11_lvgbq")
+minimum = 50.0
+
+[sub_resource type="Resource" id="Resource_axib6"]
+script = ExtResource("7_tb4bl")
+texture = ExtResource("8_cs1iy")
+rotate_bullet = false
+delete_radius = Vector2(32, 32)
+damage = 1
+speed = 600.0
+bounces = 0
+bounce_decay = 1.0
+layer = 0
+mask = 0
+collider = Rect2(-3, -3, 6, 6)
+specials = Array[Resource("res://scripts/Resources/BulletProperty.gd")]([SubResource("Resource_54cwo"), SubResource("Resource_2lx0e")])
+bullet_scene = ExtResource("9_menkm")
+
+[sub_resource type="Resource" id="Resource_vns8j"]
+script = ExtResource("7_tb4bl")
+texture = ExtResource("8_cs1iy")
+rotate_bullet = false
+delete_radius = Vector2(32, 32)
+damage = 1
+speed = 1280.0
+bounces = 0
+bounce_decay = 1.0
+layer = 0
+mask = 0
+collider = Rect2(-3, -3, 6, 6)
+specials = Array[Resource("res://scripts/Resources/BulletProperty.gd")]([])
+bullet_scene = ExtResource("9_menkm")
+
+[sub_resource type="Resource" id="Resource_7imnm"]
+script = ExtResource("7_tb4bl")
+texture = ExtResource("8_cs1iy")
+rotate_bullet = false
+delete_radius = Vector2(32, 32)
+damage = 1
+speed = 450.0
+bounces = 0
+bounce_decay = 1.0
+layer = 0
+mask = 0
+collider = Rect2(-3, -3, 6, 6)
+specials = Array[Resource("res://scripts/Resources/BulletProperty.gd")]([])
+bullet_scene = ExtResource("9_menkm")
+
+[sub_resource type="Resource" id="Resource_ir4bo"]
+script = ExtResource("7_tb4bl")
+texture = ExtResource("8_cs1iy")
+rotate_bullet = false
+delete_radius = Vector2(32, 32)
+damage = 1
+speed = 50.0
+bounces = 0
+bounce_decay = 1.0
+layer = 0
+mask = 0
+collider = Rect2(-3, -3, 6, 6)
+specials = Array[Resource("res://scripts/Resources/BulletProperty.gd")]([])
+bullet_scene = ExtResource("9_menkm")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_du8qe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_ckbf3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_yfp6l"]
+script = ExtResource("7_tb4bl")
+texture = SubResource("SpriteFrames_du8qe")
+rotate_bullet = false
+delete_radius = Vector2(32, 32)
+damage = 1
+speed = 600.0
+bounces = 0
+bounce_decay = 1.0
+layer = 0
+mask = 0
+collider = Rect2(-3, -3, 6, 6)
+specials = Array[Resource("res://scripts/Resources/BulletProperty.gd")]([])
+bullet_scene = ExtResource("9_menkm")
+
+[sub_resource type="Resource" id="Resource_xewo5"]
+script = ExtResource("8_2wodo")
+rate = -2000.0
+
+[sub_resource type="Resource" id="Resource_hinos"]
+script = ExtResource("11_lvgbq")
+minimum = 50.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwlio"]
+atlas = ExtResource("19_v3w4g")
+region = Rect2(0, 0, 6, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5pe25"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwlio")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_pepk0"]
+script = ExtResource("7_tb4bl")
+texture = SubResource("SpriteFrames_5pe25")
+rotate_bullet = true
+delete_radius = Vector2(32, 32)
+damage = 1
+speed = 600.0
+bounces = 0
+bounce_decay = 1.0
+layer = 0
+mask = 0
+collider = Rect2(-3, -3, 6, 6)
+specials = Array[Resource("res://scripts/Resources/BulletProperty.gd")]([SubResource("Resource_xewo5"), SubResource("Resource_hinos")])
+bullet_scene = ExtResource("9_menkm")
+
+[sub_resource type="Resource" id="Resource_uxk5s"]
+script = ExtResource("19_ymrbc")
+rate = Vector2(0, 1000)
+
+[sub_resource type="Resource" id="Resource_l6qx3"]
+script = ExtResource("22_2omjx")
+delete_at = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvxgq"]
+atlas = ExtResource("20_y2lps")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_noy6o"]
+atlas = ExtResource("20_y2lps")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tjoa"]
+atlas = ExtResource("20_y2lps")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkeon"]
+atlas = ExtResource("20_y2lps")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hxh0u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvxgq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_noy6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tjoa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkeon")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="Resource" id="Resource_qdsam"]
+script = ExtResource("7_tb4bl")
+texture = SubResource("SpriteFrames_hxh0u")
+rotate_bullet = false
+delete_radius = Vector2(32, 32)
+damage = 1
+speed = 450.0
+bounces = 3
+bounce_decay = 0.5
+layer = 0
+mask = 0
+collider = Rect2(-3, -3, 6, 6)
+specials = Array[Resource("res://scripts/Resources/BulletProperty.gd")]([SubResource("Resource_uxk5s"), SubResource("Resource_l6qx3")])
+bullet_scene = ExtResource("9_menkm")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_18n0d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_jeo0b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_hsik6"]
+script = ExtResource("7_tb4bl")
+texture = SubResource("SpriteFrames_18n0d")
+rotate_bullet = true
+delete_radius = Vector2(32, 32)
+damage = 1
+speed = 250.0
+bounces = 0
+bounce_decay = 1.0
+layer = 0
+mask = 0
+collider = Rect2(-3, -3, 6, 6)
+specials = Array[Resource("res://scripts/Resources/BulletProperty.gd")]([])
+bullet_scene = ExtResource("9_menkm")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5clq"]
+atlas = ExtResource("25_6qpsl")
+region = Rect2(0, 0, 24, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsd08"]
+atlas = ExtResource("25_6qpsl")
+region = Rect2(24, 0, 24, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rmty5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5clq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsd08")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="Resource" id="Resource_a48k8"]
+script = ExtResource("19_ymrbc")
+rate = Vector2(0, -600)
+
+[sub_resource type="Resource" id="Resource_om411"]
+script = ExtResource("8_2wodo")
+rate = -500.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_evoei"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("27_s7y7l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_loh8k"]
+script = ExtResource("7_tb4bl")
+texture = SubResource("SpriteFrames_evoei")
+rotate_bullet = false
+delete_radius = Vector2(32, 32)
+damage = 1
+speed = 300.0
+bounces = 0
+bounce_decay = 1.0
+layer = 0
+mask = 0
+collider = Rect2(-3, -3, 6, 6)
+specials = Array[Resource("res://scripts/Resources/BulletProperty.gd")]([SubResource("Resource_a48k8"), SubResource("Resource_om411")])
+bullet_scene = ExtResource("9_menkm")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qd36n"]
+size = Vector2(13, 12)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_iulfh")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, 11)
+amount = 10
+lifetime = 1.25
+lifetime_randomness = 0.6
+texture = ExtResource("3_wxrbk")
+emission_shape = 1
+emission_sphere_radius = 3.0
+spread = 180.0
+gravity = Vector2(0, 12)
+initial_velocity_max = 20.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+scale_amount_curve = SubResource("Curve_3nes3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_60o4o")
+animation = &"Idle"
+autoplay = "Idle"
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": false,
+"source": "res://assets/player/player.ase"
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-1, 2)
+shape = SubResource("CapsuleShape2D_t114a")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+top_level = true
+position = Vector2(24, 0)
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+script = SubResource("GDScript_kknba")
+
+[node name="SlidingWallCollider" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlidingWallCollider"]
+position = Vector2(-0.5, 6)
+shape = SubResource("RectangleShape2D_ygscv")
+debug_color = Color(0.733333, 0.341176, 0.823529, 0)
+
+[node name="GunContainer" type="Marker2D" parent="." node_paths=PackedStringArray("flip_actor", "carrier")]
+script = ExtResource("5_75hyt")
+flip_actor = NodePath("..")
+carrier = NodePath("..")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="GunContainer"]
+position = Vector2(24, 0)
+remote_path = NodePath("../../Camera2D")
+update_rotation = false
+update_scale = false
+
+[node name="CheapPistol" type="Sprite2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+visible = false
+position = Vector2(26, -2)
+texture = ExtResource("8_dpfb6")
+offset = Vector2(-11.5, 1)
+script = ExtResource("7_w8bbn")
+bullet = ExtResource("7_1qdwn")
+particle = ExtResource("8_nvg4j")
+cooldown = 0.25
+recoil = 20.0
+angle_variation = 0.0523599
+velocity_variation = 25.0
+cooldown_timer = NodePath("PistolTimer")
+
+[node name="PistolTimer" type="Timer" parent="GunContainer/CheapPistol"]
+one_shot = true
+
+[node name="Shotgun" type="Sprite2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+position = Vector2(26, -2)
+texture = ExtResource("5_88cuu")
+offset = Vector2(-11.5, 1)
+script = ExtResource("7_w8bbn")
+bullet = SubResource("Resource_axib6")
+cooldown = 0.75
+recoil = 48.0
+angle_variation = 0.174533
+velocity_variation = 120.0
+amount = 5
+field = 0.392699
+cooldown_timer = NodePath("ShotgunTimer")
+
+[node name="ShotgunTimer" type="Timer" parent="GunContainer/Shotgun"]
+one_shot = true
+
+[node name="Sniper" type="Sprite2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+visible = false
+position = Vector2(32, 1)
+texture = ExtResource("11_l8h32")
+offset = Vector2(-15.5, 0.5)
+script = ExtResource("7_w8bbn")
+bullet = SubResource("Resource_vns8j")
+velocity_bonus = 0.0
+cooldown = 1.5
+recoil = 72.0
+cooldown_timer = NodePath("SniperTimer")
+
+[node name="SniperTimer" type="Timer" parent="GunContainer/Sniper"]
+one_shot = true
+
+[node name="ChainSaw" type="Sprite2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+visible = false
+position = Vector2(34.5, -2)
+texture = ExtResource("11_kmfo7")
+offset = Vector2(-15, -1)
+script = ExtResource("7_w8bbn")
+bullet = SubResource("Resource_7imnm")
+do_physics_recoil = false
+act_as_laser = true
+velocity_bonus = 0.0
+cooldown = 0.01
+recoil = 0.0
+cooldown_timer = NodePath("ChainTimer")
+
+[node name="ChainTimer" type="Timer" parent="GunContainer/ChainSaw"]
+one_shot = true
+
+[node name="SMG" type="Sprite2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+visible = false
+position = Vector2(26, -2)
+texture = ExtResource("10_coud6")
+offset = Vector2(-11.5, 1)
+script = ExtResource("7_w8bbn")
+bullet = ExtResource("7_1qdwn")
+do_physics_recoil = false
+velocity_bonus = 0.6
+cooldown = 0.05
+recoil = 30.0
+angle_variation = 0.0872665
+velocity_variation = 160.0
+cooldown_timer = NodePath("SMGTimer")
+
+[node name="SMGTimer" type="Timer" parent="GunContainer/SMG"]
+one_shot = true
+
+[node name="SubBoomer" type="Sprite2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+visible = false
+position = Vector2(10, -2)
+texture = ExtResource("16_p11tl")
+offset = Vector2(-1.5, 3)
+script = ExtResource("7_w8bbn")
+bullet = SubResource("Resource_ir4bo")
+velocity_bonus = 0.0
+cooldown = 0.65
+recoil = 60.0
+amount = 10
+field = 0.523599
+cooldown_timer = NodePath("SpeakerTimer")
+
+[node name="SpeakerTimer" type="Timer" parent="GunContainer/SubBoomer"]
+one_shot = true
+
+[node name="SnapPeaShooter" type="Node2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+visible = false
+script = ExtResource("7_w8bbn")
+bullet = SubResource("Resource_yfp6l")
+snap_angle = 0.785398
+velocity_variation = 75.0
+cooldown_timer = NodePath("PeaTimer")
+
+[node name="PeaTimer" type="Timer" parent="GunContainer/SnapPeaShooter"]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="GunContainer/SnapPeaShooter"]
+position = Vector2(14, 0)
+texture = ExtResource("18_b0a5x")
+
+[node name="Graffiti" type="Node2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+visible = false
+position = Vector2(13, -5)
+script = ExtResource("7_w8bbn")
+bullet = SubResource("Resource_pepk0")
+do_physics_recoil = false
+cooldown = 0.05
+recoil = 0.0
+angle_variation = 0.0872665
+velocity_variation = 60.0
+amount = 4
+field = 0.0
+cooldown_timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="GunContainer/Graffiti"]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="GunContainer/Graffiti"]
+position = Vector2(-1, 5)
+texture = ExtResource("22_6a76b")
+
+[node name="FancyFire" type="Node2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+visible = false
+script = ExtResource("7_w8bbn")
+bullet = SubResource("Resource_qdsam")
+velocity_bonus = 1.0
+cooldown = 0.1
+recoil = 0.0
+snap_angle = 3.14159
+angle_variation = 6.28319
+velocity_variation = 120.0
+cooldown_timer = NodePath("FancyTimer")
+
+[node name="FancyTimer" type="Timer" parent="GunContainer/FancyFire"]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="GunContainer/FancyFire"]
+position = Vector2(0, -4)
+texture = ExtResource("21_bb80m")
+offset = Vector2(0, 0.5)
+
+[node name="ArcadeShotGun" type="Node2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+position = Vector2(25.5, -2)
+script = ExtResource("7_w8bbn")
+bullet = SubResource("Resource_hsik6")
+velocity_bonus = 0.0
+cooldown = 0.5
+recoil = 45.0
+snap_angle = 0.785398
+amount = 3
+field = 0.261799
+cooldown_timer = NodePath("ArcadeTimer")
+
+[node name="ArcadeTimer" type="Timer" parent="GunContainer/ArcadeShotGun"]
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GunContainer/ArcadeShotGun"]
+position = Vector2(-11, 1)
+sprite_frames = SubResource("SpriteFrames_rmty5")
+autoplay = "default"
+frame_progress = 0.458347
+
+[node name="BubbleShotgun" type="Node2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+position = Vector2(32, -2)
+script = ExtResource("7_w8bbn")
+bullet = SubResource("Resource_loh8k")
+velocity_bonus = 1.0
+cooldown = 0.8
+recoil = 45.0
+angle_variation = 0.261799
+velocity_variation = 180.0
+amount = 6
+field = 0.0
+cooldown_timer = NodePath("BubbleTimer")
+
+[node name="BubbleTimer" type="Timer" parent="GunContainer/BubbleShotgun"]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="GunContainer/BubbleShotgun"]
+position = Vector2(-15, 2)
+texture = ExtResource("28_xq1e5")
+offset = Vector2(0, 0.5)
+
+[node name="BubMachineGun" type="Node2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+position = Vector2(32, -2)
+script = ExtResource("7_w8bbn")
+bullet = SubResource("Resource_loh8k")
+velocity_bonus = 1.0
+cooldown = 0.05
+recoil = 15.0
+angle_variation = 0.785398
+velocity_variation = 180.0
+field = 0.0
+cooldown_timer = NodePath("BubbleTimer")
+
+[node name="BubbleTimer" type="Timer" parent="GunContainer/BubMachineGun"]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="GunContainer/BubMachineGun"]
+position = Vector2(-15, 2)
+texture = ExtResource("28_xq1e5")
+offset = Vector2(0, 0.5)
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("8_v3qsh")
+
+[node name="HitBox" type="Area2D" parent="Health" node_paths=PackedStringArray("health_actor", "cooldown_timer")]
+script = ExtResource("9_qy0q1")
+health_actor = NodePath("..")
+damage_cooldown = 0.5
+cooldown_timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="Health/HitBox"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Health/HitBox"]
+position = Vector2(-0.5, 6)
+shape = SubResource("RectangleShape2D_qd36n")
+debug_color = Color(0.733333, 0.341176, 0.823529, 0)
+
+[connection signal="body_entered" from="SlidingWallCollider" to="." method="_on_sliding_wall_entered"]
+[connection signal="body_exited" from="SlidingWallCollider" to="." method="_on_sliding_wall_exited"]
+[connection signal="child_entered_tree" from="GunContainer" to="GunContainer" method="_on_child_entered_tree"]

@@ -1,0 +1,22 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=2 format=3 uid="uid://d4bde7m82ksks"]
+
+[ext_resource type="Texture2D" uid="uid://d3jpjnxmyhqiy" path="res://obj/particles/bounce_curve.tres" id="1_xtwf8"]
+
+[resource]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+angle_min = 67.5
+angle_max = 112.5
+inherit_velocity_ratio = 0.56
+direction = Vector3(-1, -0.25, 0)
+spread = 22.5
+initial_velocity_min = 128.0
+initial_velocity_max = 256.0
+angular_velocity_min = -360.0
+angular_velocity_max = 360.0
+gravity = Vector3(0, 360, 0)
+scale_curve = ExtResource("1_xtwf8")
+collision_mode = 1
+collision_friction = 0.35
+collision_bounce = 0.75
+collision_use_scale = true

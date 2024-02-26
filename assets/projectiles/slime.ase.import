@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cnm4itaf03270"
+path="res://.godot/imported/slime.ase-4241dc64ba17cb1b13664747b8105b50.res"
+
+[deps]
+
+source_file="res://assets/projectiles/slime.ase"
+dest_files=["res://.godot/imported/slime.ase-4241dc64ba17cb1b13664747b8105b50.res"]
+
+[params]
+

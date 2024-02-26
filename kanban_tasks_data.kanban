@@ -26,23 +26,24 @@
 			"uuid": "6a040c0f-9907-4633-b2c4-678806feed5d",
 			"title": "Doing",
 			"tasks": [
-				"4cd394e8-f688-40b0-b619-f100d2f33822"
+				"3e23a507-b560-4ce2-8963-bf0219d2dfc8"
 			]
 		},
 		{
 			"uuid": "928661bc-e78a-41a4-87d0-7f3e4f267070",
 			"title": "Finished",
 			"tasks": [
-				"63506a13-dc19-49f9-9bf8-3a46082d2668"
+				"63506a13-dc19-49f9-9bf8-3a46082d2668",
+				"4cd394e8-f688-40b0-b619-f100d2f33822",
+				"c53e19d6-deea-45b9-8762-390db45c4f79"
 			]
 		},
 		{
 			"uuid": "a6c0bc0d-2937-4322-8dec-97eae6fab2f3",
 			"title": "To Do",
 			"tasks": [
-				"3e23a507-b560-4ce2-8963-bf0219d2dfc8",
-				"c53e19d6-deea-45b9-8762-390db45c4f79",
-				"13950304-64c5-476b-a7dd-79171e28d7a5"
+				"13950304-64c5-476b-a7dd-79171e28d7a5",
+				"db321514-7fb5-48d2-8ea2-b17e2e6b4143"
 			]
 		},
 		{
@@ -103,7 +104,7 @@
 				},
 				{
 					"details": "make guns for movement",
-					"done": false
+					"done": true
 				}
 			]
 		},
@@ -115,19 +116,19 @@
 			"steps": [
 				{
 					"details": "friction bullet",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "gravity bullet",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "accelerating bullet",
-					"done": false
+					"done": true
 				},
 				{
 					"details": "scattering (random forces) bullet",
-					"done": false
+					"done": true
 				}
 			]
 		},
@@ -146,6 +147,18 @@
 			"steps": [
 				{
 					"details": "add delay like 0.1 delay of not being able to fire on weapons",
+					"done": true
+				}
+			]
+		},
+		{
+			"uuid": "db321514-7fb5-48d2-8ea2-b17e2e6b4143",
+			"title": "Controller Tweaks",
+			"description": "",
+			"category": "75d57c13-201f-47c3-9efc-74603efc7159",
+			"steps": [
+				{
+					"details": "recoil will cancel continuous momentum sometimes, use min() and max() to choose whichever is higher when setting",
 					"done": false
 				}
 			]

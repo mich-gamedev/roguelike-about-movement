@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://dh3tlwxy8p2xg"
+path="res://.godot/imported/bigplayerbullet.ase-67d1c1fc2026efb90a893014334737ea.res"
+
+[deps]
+
+source_file="res://assets/projectiles/bigplayerbullet.ase"
+dest_files=["res://.godot/imported/bigplayerbullet.ase-67d1c1fc2026efb90a893014334737ea.res"]
+
+[params]
+

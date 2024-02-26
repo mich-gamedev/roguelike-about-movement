@@ -2,9 +2,11 @@
 extends Area2D
 class_name HitBox
 
-@export var health_actor: Health
 enum dmg_mode{ON_ENTER, ON_EXIT, ON_COLLISION}
-@export var damage_mode: dmg_mode
+
+@export var health_actor: Health
+@export var damage_mode : dmg_mode
+@export var team := Health.Team.ENEMY
 @export_range(0,1,0.01, "or_greater", "suffix:s") var damage_cooldown: float = 0
 @export_group("Actors")
 @export var cooldown_timer: Timer

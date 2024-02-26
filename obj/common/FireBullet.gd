@@ -1,17 +1,19 @@
 @icon("res://icons/fire_bullet_class.svg")
-extends Sprite2D
+extends Node2D
 class_name FireBullet
 
 
 @export_group("Bullet Scenes")
-@export var bullet: BulletResource
 @export var particle: PackedScene
 
 @export_group("Settings")
 @export var do_physics_recoil: bool = true
+@export var act_as_laser: bool = false
+
 @export_range(0,1, 0.01) var velocity_bonus: float = 0.25
 
 @export_group("Gun Stats")
+@export var speed: float = 600
 @export_range(0, 3, 0.01, "or_greater") var cooldown: float = 0.35
 @export_range(0, 128, 0.5, "or_greater") var recoil: float = 25
 @export_range(0,180, 0.1, "or_greater", "radians_as_degrees") var snap_angle: float
@@ -29,32 +31,44 @@ class_name FireBullet
 
 @onready var projectile_space: float = field / amount
 
+var bullet_container: BulletContainer
+
 signal bullet_fired
 signal cooldown_timeout
 
 func _ready() -> void:
 	cooldown_timer.wait_time = cooldown
-	print(projectile_space)
-	
+	for child in get_children():
+		if child is BulletContainer:
+			bullet_container = child
+			break
 func fire_bullet(direction: float):
 	if cooldown_timer.time_left == 0:
 		if particle:
 			var spawned_particle = particle.instantiate()
-			add_child(spawned_particle)
+			get_tree().root.add_child(spawned_particle)
+			spawned_particle.global_transform = global_transform
+
 		for i in range(amount):
-			var spawned_bullet = bullet.instantiate_bullet()
-			get_tree().root.add_child(spawned_bullet)
+			var spawned_bullet = Bullet.new()
+			if !act_as_laser:
+				get_tree().root.add_child(spawned_bullet)
+			else:
+				get_carrier().add_child(spawned_bullet)
 			set_up_bullet(spawned_bullet)
 			spawned_bullet.global_position = global_position
+
 			if spawned_bullet is CharacterBody2D:
 				if amount > 1:
 					var new_angle = direction + (i * projectile_space) - field / 2
-					spawned_bullet.velocity = Vector2.from_angle(new_angle + randf_range(-angle_variation, angle_variation)) * (bullet.speed + randf_range(-velocity_variation, velocity_variation))
+					spawned_bullet.velocity = Vector2.from_angle(new_angle + randf_range(-angle_variation, angle_variation)) * (speed + randf_range(-velocity_variation, velocity_variation))
 				else:
-					spawned_bullet.velocity = Vector2.from_angle(direction) * bullet.speed
+					spawned_bullet.velocity = Vector2.from_angle(direction + randf_range(-angle_variation, angle_variation)) * (speed + randf_range(-velocity_variation, velocity_variation))
+
 				spawned_bullet.velocity += get_carrier().velocity * velocity_bonus
+
 		if do_physics_recoil:
-			get_carrier().velocity += Vector2.from_angle(direction + PI) * Vector2(1,2) * (recoil*5)
+			get_carrier().velocity += (Vector2.from_angle(direction + PI) * (recoil*8)) - (get_carrier().velocity / 1.33)
 		bullet_fired.emit()
 		cooldown_timer.start()
 
@@ -64,12 +78,12 @@ func get_carrier() -> CharacterBody2D:
 	else:
 		print("Parent is not GunContainer")
 		return
-		
-func set_up_bullet(new_bullet):
-	if new_bullet is Bullet:
-		new_bullet.sprite.sprite_frames = bullet.texture
-		new_bullet.screen_delete_actor.rect = Rect2(-bullet.delete_radius, bullet.delete_radius*2)
-		new_bullet.hurtbox.damage = bullet.damage
-		new_bullet.hurtbox.collision_layer = bullet.layer
-		new_bullet.hurtbox.collision_mask = bullet.mask
 
+func set_up_bullet(new_bullet: Bullet):
+	for child in bullet_container.get_children():
+		new_bullet.add_child(child.duplicate())
+	new_bullet.collision_particle = bullet_container.collision_particles
+	new_bullet.bounces_left = bullet_container.bounces
+	new_bullet.bounce_decay = bullet_container.bounce_decay
+	new_bullet.collision_layer = bullet_container.layer
+	new_bullet.collision_mask = bullet_container.mask

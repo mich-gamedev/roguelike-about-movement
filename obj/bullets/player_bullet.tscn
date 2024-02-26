@@ -1,21 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0e0frcnib8rm"]
+[gd_scene load_steps=8 format=3 uid="uid://c0e0frcnib8rm"]
 
 [ext_resource type="Script" path="res://obj/bullets/Bullet.gd" id="1_a168m"]
 [ext_resource type="SpriteFrames" uid="uid://cyoso6fdlqtwx" path="res://obj/bullets/player_bullet.tres" id="2_gl4xe"]
+[ext_resource type="PackedScene" uid="uid://bsqxu3oxkn61k" path="res://obj/particles/collision_graffiti.tscn" id="2_llxfi"]
 [ext_resource type="Script" path="res://obj/bullets/HurtBox.gd" id="4_tsr7n"]
+[ext_resource type="Script" path="res://obj/bullets/DeleteOffScreen.gd" id="5_aig55"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cee05"]
 size = Vector2(6, 6)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ag4p"]
+radius = 3.0
+
 [node name="PlayerBullet" type="CharacterBody2D"]
 collision_layer = 0
-collision_mask = 0
+collision_mask = 2
 script = ExtResource("1_a168m")
+collision_particle = ExtResource("2_llxfi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = ExtResource("2_gl4xe")
-frame_progress = 0.0724492
+frame_progress = 0.788338
 metadata/_aseprite_wizard_config_ = {
 "layer": "Layer",
 "o_ex_p": "",
@@ -32,8 +38,15 @@ collision_mask = 32
 script = ExtResource("4_tsr7n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 shape = SubResource("RectangleShape2D_cee05")
 debug_color = Color(1, 0, 0.141176, 0)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
 rect = Rect2(-32, -32, 64, 64)
+script = ExtResource("5_aig55")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_4ag4p")

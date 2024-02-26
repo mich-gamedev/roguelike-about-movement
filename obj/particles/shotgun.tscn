@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://ds5fqc0wl0sbx"]
+
+[ext_resource type="Texture2D" uid="uid://bjro0xliguqec" path="res://assets/casings/shell.png" id="1_nupyy"]
+[ext_resource type="Script" path="res://obj/particles/EmissionStart.gd" id="2_l34v0"]
+[ext_resource type="Script" path="res://obj/bullets/DeleteOffScreen.gd" id="3_a08cp"]
+[ext_resource type="Script" path="res://obj/particles/ParticleDeleter.gd" id="4_u201i"]
+
+[sub_resource type="Curve" id="Curve_6a0ay"]
+_data = [Vector2(0, 0.483516), 0.0, 5.5, 0, 0, Vector2(0.258741, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0523809, 0.0523809, 0, 0, Vector2(1, 0), -3.45714, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_qeqfn"]
+curve = SubResource("Curve_6a0ay")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0utbh"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+angle_min = 67.5
+angle_max = 112.5
+inherit_velocity_ratio = 0.56
+direction = Vector3(-1, -0.25, 0)
+spread = 22.5
+initial_velocity_min = 256.0
+initial_velocity_max = 400.0
+angular_velocity_min = -360.0
+angular_velocity_max = 360.0
+gravity = Vector3(0, 360, 0)
+scale_curve = SubResource("CurveTexture_qeqfn")
+collision_mode = 1
+collision_friction = 0.65
+collision_bounce = 0.75
+collision_use_scale = true
+
+[node name="Node2D" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = 1
+position = Vector2(-7, 1)
+emitting = false
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_0utbh")
+texture = ExtResource("1_nupyy")
+lifetime = 2.0
+one_shot = true
+randomness = 0.25
+fixed_fps = 60
+collision_base_size = 0.1
+
+[node name="Node" type="Node" parent="GPUParticles2D" node_paths=PackedStringArray("particle")]
+script = ExtResource("2_l34v0")
+particle = NodePath("..")
+
+[node name="DeleteOffScreen" type="VisibleOnScreenNotifier2D" parent="."]
+script = ExtResource("3_a08cp")
+
+[node name="ParticleDeleter" type="Node" parent="." node_paths=PackedStringArray("particle", "actor")]
+script = ExtResource("4_u201i")
+particle = NodePath("../GPUParticles2D")
+actor = NodePath("..")

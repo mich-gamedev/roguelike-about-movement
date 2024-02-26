@@ -1,7 +1,11 @@
 @icon("res://icons/health_class.svg")
 extends Node
 class_name Health
+
+enum Team {PLAYER, ENEMY, NEUTRAL, NONE}
+
 @export_group("Health Settings")
+@export var invincible: bool = false ## health can go below 0
 @export_range(1,10, 1, "or_greater") var max_health: int = 8
 @export_range(1,10, 1, "or_greater") var starting_health: int = 8
 @export_group("Regeneration")
@@ -19,7 +23,10 @@ signal healed(amount)
 signal died
 
 func _process(_delta: float) -> void:
-	health = clamp(health, 0, max_health)
+	if !invincible:
+		health = clamp(health, 0, max_health)
+	else:
+		health = min(health, max_health)
 	if old_health > health:
 		harmed.emit(old_health - health)
 	if old_health < health:

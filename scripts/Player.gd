@@ -3,15 +3,24 @@ extends CharacterBody2D
 @export_group("Horizontal Movement")
 @export var speed: int = 240
 @export var ground_friction: int = 15000
+
 @export_group("Vertical Movement")
 @export var floor_jump_speed: int = 400
-@export var gravity: int = 1500
+@export var air_gravity: int = 1500
 @export var terminal_velocity: int = 750
+
 @export_group("BG sliding")
 @export var sliding_speed: int = 50
 @export var air_jump_speed: int = 480
+
+@export_group("Wall Sliding")
+@export var wall_gravity: int = 500
+@export var kick_speed: int = 64
+
 @export_group("Air movement")
-@export var air_friction: int = 1600
+@export var air_friction: int = 1200
+@export var recoil_friction: int = 360
+@export var air_trans: float = 560
 
 @onready var slide_collider: Area2D = $SlidingWallCollider
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
@@ -20,6 +29,7 @@ extends CharacterBody2D
 
 
 var friction: float
+var current_falling_speed: float
 var max_falling_speed : float
 var can_wall_jump : bool = false
 
@@ -27,7 +37,6 @@ func _process(delta: float) -> void:
 	input_control(delta)
 	
 	environment_control(delta)
-	
 	if velocity:
 		particles.emitting = true
 	else:
@@ -36,7 +45,7 @@ func _process(delta: float) -> void:
 	gun_pivot.target_vector = get_local_mouse_position()
 	
 	if Input.is_action_pressed("fire"):
-		gun_pivot.picked_gun.fire_bullet(gun_pivot.rotation)
+		gun_pivot.fire_current_gun(gun_pivot.rotation)
 	
 	PlayerStats.pos = position
 	PlayerStats.vel = velocity
@@ -81,8 +90,8 @@ func environment_control(delta: float) -> void:
 		else:
 			anim.play("Run")
 	else:
-		friction = air_friction
-		velocity.y = move_toward(velocity.y, max_falling_speed, gravity * delta)
+		friction = move_toward(friction, air_friction, air_trans * delta)
+		velocity.y = move_toward(velocity.y, max_falling_speed, air_gravity * delta)
 		if velocity.y < 0:
 			anim.play("Jump")
 		if velocity.y >= 0:
@@ -96,3 +105,9 @@ func environment_control(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("slide"):
 		can_wall_jump = true
+func wall_side(_delta:float) -> void:
+	if is_on_wall_only():
+		pass
+
+func _on_gun_container_current_gun_fired(_direction: float) -> void:
+	friction = recoil_friction

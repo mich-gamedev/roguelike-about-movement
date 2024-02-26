@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://bsqxu3oxkn61k"]
+
+[ext_resource type="Texture2D" uid="uid://x60n5i20ihb5" path="res://assets/particles/graffiti.png" id="1_04drm"]
+[ext_resource type="Script" path="res://SpraypaintRandomizer.gd" id="2_bx48k"]
+[ext_resource type="Script" path="res://obj/bullets/DeleteOffScreen.gd" id="4_13ne8"]
+[ext_resource type="Script" path="res://obj/particles/ParticleDeleter.gd" id="5_gemfh"]
+
+[sub_resource type="Curve" id="Curve_6a0ay"]
+_data = [Vector2(0, 0.483516), 0.0, 23.9341, 0, 0, Vector2(0.053719, 1), -2.78597, 0.0, 0, 0, Vector2(0.5, 1), 0.0523809, 0.0523809, 0, 0, Vector2(1, 0), -3.45714, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_cewtn"]
+curve = SubResource("Curve_6a0ay")
+
+[sub_resource type="Curve" id="Curve_t7342"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.1), -1.8837, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yw38q"]
+curve = SubResource("Curve_t7342")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jruix"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 2.0
+direction = Vector3(0, 1, 0)
+spread = 5.0
+initial_velocity_max = 4.0
+gravity = Vector3(0, 0, 0)
+damping_max = 2.0
+scale_curve = SubResource("CurveTexture_cewtn")
+scale_over_velocity_max = 4.0
+scale_over_velocity_curve = SubResource("CurveTexture_yw38q")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.5
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_jruix")
+texture = ExtResource("1_04drm")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("2_bx48k")
+options = Array[Color]([Color(0.368627, 0.992157, 0.968627, 1), Color(1, 0.364706, 0.8, 1), Color(0.992157, 0.996078, 0.537255, 1)])
+
+[node name="DeleteOffScreen" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, 3)
+scale = Vector2(0.5, 0.7)
+script = ExtResource("4_13ne8")
+
+[node name="Node" type="Node" parent="." node_paths=PackedStringArray("particle", "actor")]
+script = ExtResource("5_gemfh")
+particle = NodePath("..")
+actor = NodePath("..")

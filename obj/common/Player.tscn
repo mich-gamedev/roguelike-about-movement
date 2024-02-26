@@ -1,18 +1,41 @@
-[gd_scene load_steps=35 format=3 uid="uid://dal1e3o0xwrx8"]
+[gd_scene load_steps=69 format=3 uid="uid://dal1e3o0xwrx8"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_iulfh"]
 [ext_resource type="Texture2D" uid="uid://c1dbsekw1iewm" path="res://assets/player/player.png" id="2_h81pg"]
 [ext_resource type="Texture2D" uid="uid://c04qpxwfgftux" path="res://assets/particles/Dust.png" id="3_wxrbk"]
+[ext_resource type="Script" path="res://obj/common/Camera.gd" id="4_080gy"]
 [ext_resource type="Script" path="res://obj/common/GunPivot.gd" id="5_75hyt"]
 [ext_resource type="Texture2D" uid="uid://gappdiutfroq" path="res://assets/player/guns/shotgun.png" id="5_88cuu"]
-[ext_resource type="Resource" uid="uid://b4kb1qjx2hwla" path="res://obj/bullets/default_player_bullet.tres" id="7_1qdwn"]
-[ext_resource type="Script" path="res://scripts/Resources/BulletResource.gd" id="7_tb4bl"]
 [ext_resource type="Script" path="res://obj/common/FireBullet.gd" id="7_w8bbn"]
 [ext_resource type="SpriteFrames" uid="uid://cyoso6fdlqtwx" path="res://obj/bullets/player_bullet.tres" id="8_cs1iy"]
 [ext_resource type="Texture2D" uid="uid://bk5h28n5cuaey" path="res://assets/player/guns/basic_pistol.png" id="8_dpfb6"]
+[ext_resource type="PackedScene" uid="uid://b4cmqw6l1b42r" path="res://obj/particles/pistol.tscn" id="8_nvg4j"]
 [ext_resource type="Script" path="res://obj/common/Health.gd" id="8_v3qsh"]
 [ext_resource type="Script" path="res://obj/common/Hitbox.gd" id="9_qy0q1"]
 [ext_resource type="Texture2D" uid="uid://i048wsfruan1" path="res://assets/player/guns/smg.png" id="10_coud6"]
+[ext_resource type="PackedScene" uid="uid://ds5fqc0wl0sbx" path="res://obj/particles/shotgun.tscn" id="10_rmwec"]
+[ext_resource type="Script" path="res://obj/common/BulletContainer.gd" id="10_u22ea"]
+[ext_resource type="Texture2D" uid="uid://c03218bdjm0om" path="res://assets/player/guns/chainsawedoff.png" id="11_kmfo7"]
+[ext_resource type="Texture2D" uid="uid://bw6tstjbm43px" path="res://assets/player/guns/sniper.png" id="11_l8h32"]
+[ext_resource type="Script" path="res://obj/bullets/HurtBox.gd" id="12_s28r3"]
+[ext_resource type="Script" path="res://obj/bullets/DeleteOffScreen.gd" id="13_aa7v3"]
+[ext_resource type="Script" path="res://obj/bullets/AccelerationComponent.gd" id="15_c7k18"]
+[ext_resource type="Texture2D" uid="uid://mrsg2k0tekah" path="res://assets/player/guns/speaker.png" id="16_p11tl"]
+[ext_resource type="Script" path="res://obj/bullets/DeleteBullet.gd" id="16_pp53b"]
+[ext_resource type="Script" path="res://obj/bullets/MinimumComponent.gd" id="16_yt6vc"]
+[ext_resource type="PackedScene" uid="uid://d3ohb0rn3iain" path="res://obj/particles/sniper.tscn" id="17_ijwst"]
+[ext_resource type="Texture2D" uid="uid://b0fovy47tl387" path="res://assets/player/guns/snappeashooter.png" id="18_b0a5x"]
+[ext_resource type="PackedScene" uid="uid://ddq6isokopcbq" path="res://obj/particles/smg.tscn" id="18_x5f0o"]
+[ext_resource type="Texture2D" uid="uid://bk4kd4pgfvxbl" path="res://assets/player/guns/sunglasses.png" id="21_bb80m"]
+[ext_resource type="Texture2D" uid="uid://bakdf1dx8gfuj" path="res://assets/player/guns/spraypaint.png" id="22_6a76b"]
+[ext_resource type="Texture2D" uid="uid://cn5rqd7cmx6ai" path="res://assets/player/guns/arcadeshotgun.png" id="25_6qpsl"]
+[ext_resource type="Texture2D" uid="uid://cm625b7d02a16" path="res://assets/projectiles/spraypaint_smoke.png" id="26_510g5"]
+[ext_resource type="Texture2D" uid="uid://do42duh6nasw5" path="res://assets/projectiles/coin-Sheet.png" id="27_q87pj"]
+[ext_resource type="Script" path="res://obj/common/NoRotation.gd" id="27_rfmvi"]
+[ext_resource type="Texture2D" uid="uid://co05kr2e8g17y" path="res://assets/player/guns/poisonbubblegun.png" id="28_xq1e5"]
+[ext_resource type="Texture2D" uid="uid://bjtjfoqsntrya" path="res://assets/projectiles/arcadebullet.png" id="29_umpyj"]
+[ext_resource type="Script" path="res://obj/bullets/GravityComponent.gd" id="29_w68la"]
+[ext_resource type="Texture2D" uid="uid://cvjk2xd8yigid" path="res://assets/projectiles/bubble.png" id="30_fqpfs"]
 
 [sub_resource type="Curve" id="Curve_3nes3"]
 _data = [Vector2(0, 0.89011), 0.0, 1.11662, 0, 0, Vector2(1, 0), -0.118343, 0.0, 0, 0]
@@ -161,29 +184,115 @@ animations = [{
 radius = 6.0
 height = 20.0
 
-[sub_resource type="GDScript" id="GDScript_kknba"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ygscv"]
 size = Vector2(13, 12)
 
-[sub_resource type="Resource" id="Resource_vns8j"]
-script = ExtResource("7_tb4bl")
-texture = ExtResource("8_cs1iy")
-rotate_bullet = false
-delete_radius = Vector2(32, 32)
-properties = Array[Resource("res://scripts/Resources/BulletProperty.gd")]([])
-damage = 1
-speed = 1280.0
-layer = 0
-mask = 0
-collider = Rect2(-3, -3, 6, 6)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pe5q4"]
+size = Vector2(6, 6)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6yoxk"]
+radius = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4jy8"]
+atlas = ExtResource("27_q87pj")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54u7j"]
+atlas = ExtResource("27_q87pj")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4oko"]
+atlas = ExtResource("27_q87pj")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_633tl"]
+atlas = ExtResource("27_q87pj")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bgqk4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4jy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54u7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i4oko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_633tl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5clq"]
+atlas = ExtResource("25_6qpsl")
+region = Rect2(0, 0, 24, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsd08"]
+atlas = ExtResource("25_6qpsl")
+region = Rect2(24, 0, 24, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rmty5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5clq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsd08")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="Animation" id="Animation_jwqmq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_bb052"]
+resource_name = "pop_up"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1.25, 1.25), Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n8gxe"]
+_data = {
+"RESET": SubResource("Animation_jwqmq"),
+"pop_up": SubResource("Animation_bb052")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qd36n"]
 size = Vector2(13, 12)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_iulfh")
-air_friction = 1200
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(0, 11)
@@ -223,9 +332,10 @@ shape = SubResource("CapsuleShape2D_t114a")
 [node name="Camera2D" type="Camera2D" parent="."]
 top_level = true
 position = Vector2(24, 0)
+limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
-script = SubResource("GDScript_kknba")
+script = ExtResource("4_080gy")
 
 [node name="SlidingWallCollider" type="Area2D" parent="."]
 collision_layer = 16
@@ -241,16 +351,89 @@ script = ExtResource("5_75hyt")
 flip_actor = NodePath("..")
 carrier = NodePath("..")
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="GunContainer"]
+position = Vector2(24, 0)
+remote_path = NodePath("../../Camera2D")
+update_rotation = false
+update_scale = false
+
+[node name="CheapPistol" type="Sprite2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+position = Vector2(20, -1)
+texture = ExtResource("8_dpfb6")
+offset = Vector2(-5.46, 1)
+script = ExtResource("7_w8bbn")
+particle = ExtResource("8_nvg4j")
+cooldown = 0.25
+recoil = 20.0
+angle_variation = 0.0872665
+velocity_variation = 25.0
+cooldown_timer = NodePath("PistolTimer")
+metadata/_aseprite_wizard_config_ = {
+"i_mode": -1,
+"keep_anim_length": false,
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": false,
+"player": "",
+"source": "res://assets/projectiles/bigplayerbullet.ase"
+}
+
+[node name="PistolTimer" type="Timer" parent="GunContainer/CheapPistol"]
+one_shot = true
+
+[node name="BulletContainer" type="Node2D" parent="GunContainer/CheapPistol"]
+visible = false
+position = Vector2(-20, 1)
+script = ExtResource("10_u22ea")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GunContainer/CheapPistol/BulletContainer"]
+texture_filter = 1
+sprite_frames = ExtResource("8_cs1iy")
+frame_progress = 0.788338
+metadata/_aseprite_wizard_config_ = {
+"layer": "Layer",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": true,
+"source": "res://assets/projectiles/playerbullet1.ase"
+}
+
+[node name="Area2D" type="Area2D" parent="GunContainer/CheapPistol/BulletContainer"]
+collision_layer = 128
+collision_mask = 32
+script = ExtResource("12_s28r3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/CheapPistol/BulletContainer/Area2D"]
+shape = SubResource("RectangleShape2D_pe5q4")
+debug_color = Color(1, 0, 0.141176, 0)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="GunContainer/CheapPistol/BulletContainer"]
+rect = Rect2(-32, -32, 64, 64)
+script = ExtResource("13_aa7v3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/CheapPistol/BulletContainer"]
+shape = SubResource("CircleShape2D_6yoxk")
+
+[node name="DeleteComponent" type="Node" parent="GunContainer/CheapPistol/BulletContainer"]
+script = ExtResource("16_pp53b")
+time = 0.33
+
 [node name="Shotgun" type="Sprite2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+visible = false
 position = Vector2(26, -2)
 texture = ExtResource("5_88cuu")
 offset = Vector2(-11.5, 1)
 script = ExtResource("7_w8bbn")
-bullet = ExtResource("7_1qdwn")
+particle = ExtResource("10_rmwec")
 cooldown = 0.75
-recoil = 48.0
-angle_variation = 0.261799
-velocity_variation = 75.0
+recoil = 56.0
+angle_variation = 0.174533
+velocity_variation = 120.0
 amount = 5
 field = 0.392699
 cooldown_timer = NodePath("ShotgunTimer")
@@ -258,77 +441,592 @@ cooldown_timer = NodePath("ShotgunTimer")
 [node name="ShotgunTimer" type="Timer" parent="GunContainer/Shotgun"]
 one_shot = true
 
+[node name="BulletContainer" type="Node2D" parent="GunContainer/Shotgun"]
+visible = false
+position = Vector2(-20, 1)
+script = ExtResource("10_u22ea")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GunContainer/Shotgun/BulletContainer"]
+texture_filter = 1
+sprite_frames = ExtResource("8_cs1iy")
+frame_progress = 0.788338
+metadata/_aseprite_wizard_config_ = {
+"layer": "Layer",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": true,
+"source": "res://assets/projectiles/playerbullet1.ase"
+}
+
+[node name="Area2D" type="Area2D" parent="GunContainer/Shotgun/BulletContainer"]
+collision_layer = 128
+collision_mask = 32
+script = ExtResource("12_s28r3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/Shotgun/BulletContainer/Area2D"]
+shape = SubResource("RectangleShape2D_pe5q4")
+debug_color = Color(1, 0, 0.141176, 0)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="GunContainer/Shotgun/BulletContainer"]
+rect = Rect2(-32, -32, 64, 64)
+script = ExtResource("13_aa7v3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/Shotgun/BulletContainer"]
+visible = false
+shape = SubResource("CircleShape2D_6yoxk")
+
+[node name="Acceleration" type="Node" parent="GunContainer/Shotgun/BulletContainer"]
+script = ExtResource("15_c7k18")
+acceleration = -1200.0
+
+[node name="MinimumVelocity" type="Node" parent="GunContainer/Shotgun/BulletContainer"]
+script = ExtResource("16_yt6vc")
+
 [node name="Sniper" type="Sprite2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
-position = Vector2(26, -2)
-texture = ExtResource("5_88cuu")
-offset = Vector2(-11.5, 1)
+visible = false
+position = Vector2(32, 1)
+texture = ExtResource("11_l8h32")
+offset = Vector2(-15.5, 0.5)
 script = ExtResource("7_w8bbn")
-bullet = SubResource("Resource_vns8j")
+particle = ExtResource("17_ijwst")
 velocity_bonus = 0.0
-cooldown = 1.25
-recoil = 96.0
+speed = 1500.0
+cooldown = 1.5
+recoil = 72.0
 cooldown_timer = NodePath("SniperTimer")
 
 [node name="SniperTimer" type="Timer" parent="GunContainer/Sniper"]
 one_shot = true
 
-[node name="CheapPistol" type="Sprite2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
-position = Vector2(26, -2)
-texture = ExtResource("8_dpfb6")
-offset = Vector2(-11.5, 1)
-script = ExtResource("7_w8bbn")
-bullet = ExtResource("7_1qdwn")
-cooldown = 0.25
-recoil = 20.0
-angle_variation = 0.174533
-velocity_variation = 25.0
-cooldown_timer = NodePath("PistolTimer")
+[node name="BulletContainer" type="Node2D" parent="GunContainer/Sniper"]
+visible = false
+position = Vector2(-20, 1)
+script = ExtResource("10_u22ea")
 
-[node name="PistolTimer" type="Timer" parent="GunContainer/CheapPistol"]
-one_shot = true
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GunContainer/Sniper/BulletContainer"]
+texture_filter = 1
+sprite_frames = ExtResource("8_cs1iy")
+frame_progress = 0.788338
+metadata/_aseprite_wizard_config_ = {
+"layer": "Layer",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": true,
+"source": "res://assets/projectiles/playerbullet1.ase"
+}
 
-[node name="Chainmurder" type="Sprite2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
-position = Vector2(26, -2)
-texture = ExtResource("8_dpfb6")
-offset = Vector2(-11.5, 1)
-script = ExtResource("7_w8bbn")
-bullet = ExtResource("7_1qdwn")
-do_physics_recoil = false
-velocity_bonus = 0.0
-cooldown = 0.01
-recoil = 0.0
-cooldown_timer = NodePath("ChainTimer")
+[node name="Area2D" type="Area2D" parent="GunContainer/Sniper/BulletContainer"]
+collision_layer = 128
+collision_mask = 32
+script = ExtResource("12_s28r3")
 
-[node name="ChainTimer" type="Timer" parent="GunContainer/Chainmurder"]
-one_shot = true
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/Sniper/BulletContainer/Area2D"]
+shape = SubResource("RectangleShape2D_pe5q4")
+debug_color = Color(1, 0, 0.141176, 0)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="GunContainer/Sniper/BulletContainer"]
+rect = Rect2(-32, -32, 64, 64)
+script = ExtResource("13_aa7v3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/Sniper/BulletContainer"]
+shape = SubResource("CircleShape2D_6yoxk")
 
 [node name="SMG" type="Sprite2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
 position = Vector2(26, -2)
 texture = ExtResource("10_coud6")
 offset = Vector2(-11.5, 1)
 script = ExtResource("7_w8bbn")
-bullet = ExtResource("7_1qdwn")
+particle = ExtResource("18_x5f0o")
 do_physics_recoil = false
 velocity_bonus = 0.6
-cooldown = 0.1
+cooldown = 0.05
 recoil = 30.0
-angle_variation = 0.349066
-velocity_variation = 70.0
-cooldown_timer = NodePath("ChainTimer")
+angle_variation = 0.0872665
+velocity_variation = 160.0
+cooldown_timer = NodePath("SMGTimer")
 
-[node name="ChainTimer" type="Timer" parent="GunContainer/SMG"]
+[node name="SMGTimer" type="Timer" parent="GunContainer/SMG"]
 one_shot = true
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="GunContainer"]
-position = Vector2(24, 0)
-remote_path = NodePath("../../Camera2D")
-update_rotation = false
-update_scale = false
+[node name="BulletContainer" type="Node2D" parent="GunContainer/SMG"]
+visible = false
+position = Vector2(-20, 1)
+script = ExtResource("10_u22ea")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GunContainer/SMG/BulletContainer"]
+texture_filter = 1
+sprite_frames = ExtResource("8_cs1iy")
+frame_progress = 0.788338
+metadata/_aseprite_wizard_config_ = {
+"layer": "Layer",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": true,
+"source": "res://assets/projectiles/playerbullet1.ase"
+}
+
+[node name="Area2D" type="Area2D" parent="GunContainer/SMG/BulletContainer"]
+collision_layer = 128
+collision_mask = 32
+script = ExtResource("12_s28r3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/SMG/BulletContainer/Area2D"]
+shape = SubResource("RectangleShape2D_pe5q4")
+debug_color = Color(1, 0, 0.141176, 0)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="GunContainer/SMG/BulletContainer"]
+rect = Rect2(-32, -32, 64, 64)
+script = ExtResource("13_aa7v3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/SMG/BulletContainer"]
+shape = SubResource("CircleShape2D_6yoxk")
+
+[node name="DeleteComponent" type="Node" parent="GunContainer/SMG/BulletContainer"]
+script = ExtResource("16_pp53b")
+time = 0.25
+
+[node name="ChainSaw" type="Sprite2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+visible = false
+position = Vector2(34.5, -2)
+texture = ExtResource("11_kmfo7")
+offset = Vector2(-15, -1)
+script = ExtResource("7_w8bbn")
+do_physics_recoil = false
+act_as_laser = true
+velocity_bonus = 0.0
+cooldown = 0.01
+recoil = 0.0
+cooldown_timer = NodePath("ChainTimer")
+
+[node name="ChainTimer" type="Timer" parent="GunContainer/ChainSaw"]
+one_shot = true
+
+[node name="BulletContainer" type="Node2D" parent="GunContainer/ChainSaw"]
+visible = false
+position = Vector2(-20, 1)
+script = ExtResource("10_u22ea")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GunContainer/ChainSaw/BulletContainer"]
+texture_filter = 1
+sprite_frames = ExtResource("8_cs1iy")
+frame_progress = 0.788338
+metadata/_aseprite_wizard_config_ = {
+"layer": "Layer",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": true,
+"source": "res://assets/projectiles/playerbullet1.ase"
+}
+
+[node name="Area2D" type="Area2D" parent="GunContainer/ChainSaw/BulletContainer"]
+collision_layer = 128
+collision_mask = 32
+script = ExtResource("12_s28r3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/ChainSaw/BulletContainer/Area2D"]
+shape = SubResource("RectangleShape2D_pe5q4")
+debug_color = Color(1, 0, 0.141176, 0)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="GunContainer/ChainSaw/BulletContainer"]
+rect = Rect2(-32, -32, 64, 64)
+script = ExtResource("13_aa7v3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/ChainSaw/BulletContainer"]
+shape = SubResource("CircleShape2D_6yoxk")
+
+[node name="Acceleration" type="Node" parent="GunContainer/ChainSaw/BulletContainer"]
+script = ExtResource("15_c7k18")
+acceleration = -800.0
+
+[node name="MinimumVelocity" type="Node" parent="GunContainer/ChainSaw/BulletContainer"]
+script = ExtResource("16_yt6vc")
+
+[node name="SubBoomer" type="Sprite2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+visible = false
+position = Vector2(10, -2)
+texture = ExtResource("16_p11tl")
+offset = Vector2(-1.5, 3)
+script = ExtResource("7_w8bbn")
+velocity_bonus = 0.0
+speed = 50.0
+cooldown = 0.65
+recoil = 60.0
+amount = 10
+field = 0.523599
+cooldown_timer = NodePath("SpeakerTimer")
+
+[node name="SpeakerTimer" type="Timer" parent="GunContainer/SubBoomer"]
+one_shot = true
+
+[node name="BulletContainer" type="Node2D" parent="GunContainer/SubBoomer"]
+visible = false
+position = Vector2(-20, 1)
+script = ExtResource("10_u22ea")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GunContainer/SubBoomer/BulletContainer"]
+texture_filter = 1
+sprite_frames = ExtResource("8_cs1iy")
+frame_progress = 0.788338
+metadata/_aseprite_wizard_config_ = {
+"layer": "Layer",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": true,
+"source": "res://assets/projectiles/playerbullet1.ase"
+}
+
+[node name="Area2D" type="Area2D" parent="GunContainer/SubBoomer/BulletContainer"]
+collision_layer = 128
+collision_mask = 32
+script = ExtResource("12_s28r3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/SubBoomer/BulletContainer/Area2D"]
+shape = SubResource("RectangleShape2D_pe5q4")
+debug_color = Color(1, 0, 0.141176, 0)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="GunContainer/SubBoomer/BulletContainer"]
+rect = Rect2(-32, -32, 64, 64)
+script = ExtResource("13_aa7v3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/SubBoomer/BulletContainer"]
+shape = SubResource("CircleShape2D_6yoxk")
+
+[node name="SnapPeaShooter" type="Node2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+visible = false
+script = ExtResource("7_w8bbn")
+snap_angle = 0.785398
+velocity_variation = 75.0
+cooldown_timer = NodePath("PeaTimer")
+
+[node name="PeaTimer" type="Timer" parent="GunContainer/SnapPeaShooter"]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="GunContainer/SnapPeaShooter"]
+position = Vector2(14, 0)
+texture = ExtResource("18_b0a5x")
+
+[node name="BulletContainer" type="Node2D" parent="GunContainer/SnapPeaShooter"]
+visible = false
+position = Vector2(-20, 1)
+script = ExtResource("10_u22ea")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GunContainer/SnapPeaShooter/BulletContainer"]
+texture_filter = 1
+sprite_frames = ExtResource("8_cs1iy")
+frame_progress = 0.788338
+metadata/_aseprite_wizard_config_ = {
+"layer": "Layer",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": true,
+"source": "res://assets/projectiles/playerbullet1.ase"
+}
+
+[node name="Area2D" type="Area2D" parent="GunContainer/SnapPeaShooter/BulletContainer"]
+collision_layer = 128
+collision_mask = 32
+script = ExtResource("12_s28r3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/SnapPeaShooter/BulletContainer/Area2D"]
+shape = SubResource("RectangleShape2D_pe5q4")
+debug_color = Color(1, 0, 0.141176, 0)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="GunContainer/SnapPeaShooter/BulletContainer"]
+rect = Rect2(-32, -32, 64, 64)
+script = ExtResource("13_aa7v3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/SnapPeaShooter/BulletContainer"]
+shape = SubResource("CircleShape2D_6yoxk")
+
+[node name="Graffiti" type="Node2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+visible = false
+position = Vector2(13, -5)
+script = ExtResource("7_w8bbn")
+do_physics_recoil = false
+cooldown = 0.05
+recoil = 0.0
+angle_variation = 0.0872665
+velocity_variation = 60.0
+amount = 4
+field = 0.0
+cooldown_timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="GunContainer/Graffiti"]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="GunContainer/Graffiti"]
+position = Vector2(-1, 5)
+texture = ExtResource("22_6a76b")
+
+[node name="BulletContainer" type="Node2D" parent="GunContainer/Graffiti"]
+visible = false
+position = Vector2(-20, 1)
+script = ExtResource("10_u22ea")
+
+[node name="Area2D" type="Area2D" parent="GunContainer/Graffiti/BulletContainer"]
+collision_layer = 128
+collision_mask = 32
+script = ExtResource("12_s28r3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/Graffiti/BulletContainer/Area2D"]
+shape = SubResource("RectangleShape2D_pe5q4")
+debug_color = Color(1, 0, 0.141176, 0)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="GunContainer/Graffiti/BulletContainer"]
+rect = Rect2(-32, -32, 64, 64)
+script = ExtResource("13_aa7v3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/Graffiti/BulletContainer"]
+shape = SubResource("CircleShape2D_6yoxk")
+
+[node name="Sprite2D" type="Sprite2D" parent="GunContainer/Graffiti/BulletContainer"]
+texture = ExtResource("26_510g5")
+
+[node name="Acceleration" type="Node" parent="GunContainer/Graffiti/BulletContainer"]
+script = ExtResource("15_c7k18")
+acceleration = -2000.0
+
+[node name="MinimumVelocity" type="Node" parent="GunContainer/Graffiti/BulletContainer"]
+script = ExtResource("16_yt6vc")
+
+[node name="FancyFire" type="Node2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+script = ExtResource("7_w8bbn")
+do_physics_recoil = false
+velocity_bonus = 1.0
+speed = 450.0
+cooldown = 0.1
+recoil = 15.0
+angle_variation = 0.785398
+velocity_variation = 120.0
+cooldown_timer = NodePath("FancyTimer")
+
+[node name="FancyTimer" type="Timer" parent="GunContainer/FancyFire"]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="GunContainer/FancyFire"]
+texture = ExtResource("21_bb80m")
+offset = Vector2(0, -2.5)
+script = ExtResource("27_rfmvi")
+
+[node name="BulletContainer" type="Node2D" parent="GunContainer/FancyFire"]
+visible = false
+position = Vector2(-20, 1)
+script = ExtResource("10_u22ea")
+bounces = 3
+bounce_decay = 0.75
+collision_particles = null
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GunContainer/FancyFire/BulletContainer"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_bgqk4")
+autoplay = "default"
+metadata/_aseprite_wizard_config_ = {
+"layer": "Layer",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"op_exp": true,
+"source": "res://assets/projectiles/playerbullet1.ase"
+}
+
+[node name="Area2D" type="Area2D" parent="GunContainer/FancyFire/BulletContainer"]
+collision_layer = 128
+collision_mask = 32
+script = ExtResource("12_s28r3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/FancyFire/BulletContainer/Area2D"]
+shape = SubResource("RectangleShape2D_pe5q4")
+debug_color = Color(1, 0, 0.141176, 0)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="GunContainer/FancyFire/BulletContainer"]
+rect = Rect2(-32, -32, 64, 64)
+script = ExtResource("13_aa7v3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/FancyFire/BulletContainer"]
+shape = SubResource("CircleShape2D_6yoxk")
+
+[node name="GravityComponent" type="Node" parent="GunContainer/FancyFire/BulletContainer"]
+script = ExtResource("29_w68la")
+rate = Vector2(0, 1000)
+
+[node name="ArcadeShotGun" type="Node2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+visible = false
+position = Vector2(25.5, -2)
+script = ExtResource("7_w8bbn")
+velocity_bonus = 0.0
+cooldown = 0.5
+recoil = 45.0
+snap_angle = 0.785398
+amount = 3
+field = 0.261799
+cooldown_timer = NodePath("ArcadeTimer")
+
+[node name="ArcadeTimer" type="Timer" parent="GunContainer/ArcadeShotGun"]
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="GunContainer/ArcadeShotGun"]
+position = Vector2(-11, 1)
+sprite_frames = SubResource("SpriteFrames_rmty5")
+autoplay = "default"
+frame_progress = 0.458347
+
+[node name="BulletContainer" type="Node2D" parent="GunContainer/ArcadeShotGun"]
+visible = false
+position = Vector2(-20, 1)
+script = ExtResource("10_u22ea")
+
+[node name="Area2D" type="Area2D" parent="GunContainer/ArcadeShotGun/BulletContainer"]
+collision_layer = 128
+collision_mask = 32
+script = ExtResource("12_s28r3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/ArcadeShotGun/BulletContainer/Area2D"]
+shape = SubResource("RectangleShape2D_pe5q4")
+debug_color = Color(1, 0, 0.141176, 0)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="GunContainer/ArcadeShotGun/BulletContainer"]
+rect = Rect2(-32, -32, 64, 64)
+script = ExtResource("13_aa7v3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/ArcadeShotGun/BulletContainer"]
+shape = SubResource("CircleShape2D_6yoxk")
+
+[node name="Arcadebullet" type="Sprite2D" parent="GunContainer/ArcadeShotGun/BulletContainer"]
+position = Vector2(-5.5, 1)
+texture = ExtResource("29_umpyj")
+
+[node name="BubbleShotgun" type="Node2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+position = Vector2(32, -2)
+script = ExtResource("7_w8bbn")
+velocity_bonus = 1.0
+speed = 250.0
+cooldown = 0.8
+recoil = 45.0
+angle_variation = 0.261799
+velocity_variation = 180.0
+amount = 6
+field = 0.0
+cooldown_timer = NodePath("BubbleTimer")
+
+[node name="BubbleTimer" type="Timer" parent="GunContainer/BubbleShotgun"]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="GunContainer/BubbleShotgun"]
+position = Vector2(-15, 2)
+texture = ExtResource("28_xq1e5")
+offset = Vector2(0, 0.5)
+
+[node name="BulletContainer" type="Node2D" parent="GunContainer/BubbleShotgun"]
+position = Vector2(-20, 1)
+script = ExtResource("10_u22ea")
+
+[node name="Area2D" type="Area2D" parent="GunContainer/BubbleShotgun/BulletContainer"]
+collision_layer = 128
+collision_mask = 32
+script = ExtResource("12_s28r3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/BubbleShotgun/BulletContainer/Area2D"]
+shape = SubResource("RectangleShape2D_pe5q4")
+debug_color = Color(1, 0, 0.141176, 0)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="GunContainer/BubbleShotgun/BulletContainer"]
+rect = Rect2(-32, -32, 64, 64)
+script = ExtResource("13_aa7v3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/BubbleShotgun/BulletContainer"]
+shape = SubResource("CircleShape2D_6yoxk")
+
+[node name="GravityComponent" type="Node" parent="GunContainer/BubbleShotgun/BulletContainer"]
+script = ExtResource("29_w68la")
+rate = Vector2(0, -750)
+
+[node name="Acceleration" type="Node" parent="GunContainer/BubbleShotgun/BulletContainer"]
+script = ExtResource("15_c7k18")
+acceleration = -500.0
+
+[node name="Sprite2D" type="Sprite2D" parent="GunContainer/BubbleShotgun/BulletContainer"]
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("30_fqpfs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GunContainer/BubbleShotgun/BulletContainer/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_n8gxe")
+}
+autoplay = "pop_up"
+
+[node name="BubMachineGun" type="Node2D" parent="GunContainer" node_paths=PackedStringArray("cooldown_timer")]
+visible = false
+position = Vector2(32, -2)
+script = ExtResource("7_w8bbn")
+do_physics_recoil = false
+velocity_bonus = 1.0
+speed = 350.0
+cooldown = 0.1
+recoil = 15.0
+angle_variation = 0.785398
+velocity_variation = 180.0
+field = 0.0
+cooldown_timer = NodePath("BubbleTimer")
+
+[node name="BubbleTimer" type="Timer" parent="GunContainer/BubMachineGun"]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="GunContainer/BubMachineGun"]
+position = Vector2(-15, 2)
+texture = ExtResource("28_xq1e5")
+offset = Vector2(0, 0.5)
+
+[node name="BulletContainer" type="Node2D" parent="GunContainer/BubMachineGun"]
+visible = false
+position = Vector2(-20, 1)
+script = ExtResource("10_u22ea")
+
+[node name="Area2D" type="Area2D" parent="GunContainer/BubMachineGun/BulletContainer"]
+collision_layer = 128
+collision_mask = 32
+script = ExtResource("12_s28r3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/BubMachineGun/BulletContainer/Area2D"]
+shape = SubResource("RectangleShape2D_pe5q4")
+debug_color = Color(1, 0, 0.141176, 0)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="GunContainer/BubMachineGun/BulletContainer"]
+rect = Rect2(-32, -32, 64, 64)
+script = ExtResource("13_aa7v3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunContainer/BubMachineGun/BulletContainer"]
+shape = SubResource("CircleShape2D_6yoxk")
+
+[node name="GravityComponent" type="Node" parent="GunContainer/BubMachineGun/BulletContainer"]
+script = ExtResource("29_w68la")
+rate = Vector2(0, -750)
+
+[node name="Acceleration" type="Node" parent="GunContainer/BubMachineGun/BulletContainer"]
+script = ExtResource("15_c7k18")
+acceleration = -500.0
+
+[node name="Sprite2D" type="Sprite2D" parent="GunContainer/BubMachineGun/BulletContainer"]
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("30_fqpfs")
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("8_v3qsh")
 
 [node name="HitBox" type="Area2D" parent="Health" node_paths=PackedStringArray("health_actor", "cooldown_timer")]
+visible = false
 script = ExtResource("9_qy0q1")
 health_actor = NodePath("..")
 damage_cooldown = 0.5
@@ -344,3 +1042,4 @@ debug_color = Color(0.733333, 0.341176, 0.823529, 0)
 [connection signal="body_entered" from="SlidingWallCollider" to="." method="_on_sliding_wall_entered"]
 [connection signal="body_exited" from="SlidingWallCollider" to="." method="_on_sliding_wall_exited"]
 [connection signal="child_entered_tree" from="GunContainer" to="GunContainer" method="_on_child_entered_tree"]
+[connection signal="current_gun_fired" from="GunContainer" to="." method="_on_gun_container_current_gun_fired"]
