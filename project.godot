@@ -18,6 +18,8 @@ config/features=PackedStringArray("4.2")
 PlayerStats="*res://scripts/singletons/PlayerStats.gd"
 Hotkeys="*res://scripts/singletons/hotkeys.gd"
 Util="*res://scripts/singletons/utilities.gd"
+BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
+BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 
 [debug]
 
@@ -31,7 +33,7 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
-window/vsync/vsync_mode=0
+window/vsync/vsync_mode=2
 
 [editor]
 
@@ -40,7 +42,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg")
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/beehave/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg")
 
 [input]
 

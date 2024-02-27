@@ -1,0 +1,214 @@
+[gd_scene load_steps=27 format=3 uid="uid://by3bfj5xjxw5e"]
+
+[ext_resource type="Texture2D" uid="uid://2frv3xo283l0" path="res://obj/enemies/tire.png" id="1_7rwsb"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="2_48yta"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="3_6grke"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="4_emm8j"]
+[ext_resource type="Script" path="res://obj/enemies/is_near_target.gd" id="5_dhj7s"]
+[ext_resource type="Script" path="res://obj/enemies/MoveAlongFloor.gd" id="6_g6qas"]
+[ext_resource type="Script" path="res://obj/enemies/IsOnWall.gd" id="7_m6bba"]
+[ext_resource type="Script" path="res://obj/enemies/BounceOffWall.gd" id="8_2l8ey"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/decorators/inverter.gd" id="9_2jf5g"]
+[ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="9_efkew"]
+[ext_resource type="Script" path="res://obj/enemies/ReturnVelocity.gd" id="10_ic0wd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4tv1"]
+atlas = ExtResource("1_7rwsb")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6uvw"]
+atlas = ExtResource("1_7rwsb")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thtxw"]
+atlas = ExtResource("1_7rwsb")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx6g1"]
+atlas = ExtResource("1_7rwsb")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5uu0"]
+atlas = ExtResource("1_7rwsb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7neu0"]
+atlas = ExtResource("1_7rwsb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8n0wc"]
+atlas = ExtResource("1_7rwsb")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbxkg"]
+atlas = ExtResource("1_7rwsb")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o64sc"]
+atlas = ExtResource("1_7rwsb")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i66f1"]
+atlas = ExtResource("1_7rwsb")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2lch"]
+atlas = ExtResource("1_7rwsb")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldmjb"]
+atlas = ExtResource("1_7rwsb")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpjlx"]
+atlas = ExtResource("1_7rwsb")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b4suu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4tv1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6uvw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thtxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gx6g1")
+}],
+"loop": true,
+"name": &"awake",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5uu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7neu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8n0wc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5uu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7neu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8n0wc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5uu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7neu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8n0wc")
+}],
+"loop": true,
+"name": &"roll",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbxkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o64sc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i66f1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e2lch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldmjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpjlx")
+}],
+"loop": true,
+"name": &"sleep",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dstpr"]
+radius = 9.0
+
+[node name="Tire" type="CharacterBody2D" groups=["enemy"]]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1, -16)
+sprite_frames = SubResource("SpriteFrames_b4suu")
+animation = &"roll"
+frame_progress = 0.601717
+metadata/_aseprite_wizard_config_ = {
+"layer": "",
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": true,
+"slice": "",
+"source": "res://assets/enemies/tire.ase"
+}
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_dstpr")
+
+[node name="BeehaveTree" type="Node" parent="." node_paths=PackedStringArray("blackboard", "actor")]
+script = ExtResource("2_48yta")
+blackboard = NodePath("../Blackboard")
+actor = NodePath("..")
+
+[node name="SelectorComposite" type="Node" parent="BeehaveTree"]
+script = ExtResource("3_6grke")
+
+[node name="Running" type="Node" parent="BeehaveTree/SelectorComposite"]
+script = ExtResource("4_emm8j")
+
+[node name="IsNearTarget" type="Node" parent="BeehaveTree/SelectorComposite/Running"]
+script = ExtResource("5_dhj7s")
+
+[node name="MoveAlongFloor" type="Node" parent="BeehaveTree/SelectorComposite/Running"]
+script = ExtResource("6_g6qas")
+
+[node name="Crashing" type="Node" parent="BeehaveTree/SelectorComposite"]
+script = ExtResource("4_emm8j")
+
+[node name="IsOnWall" type="Node" parent="BeehaveTree/SelectorComposite/Crashing"]
+script = ExtResource("7_m6bba")
+
+[node name="ActionLeaf" type="Node" parent="BeehaveTree/SelectorComposite/Crashing"]
+script = ExtResource("8_2l8ey")
+
+[node name="Idle" type="Node" parent="BeehaveTree/SelectorComposite"]
+script = ExtResource("4_emm8j")
+
+[node name="InverterDecorator" type="Node" parent="BeehaveTree/SelectorComposite/Idle"]
+script = ExtResource("9_2jf5g")
+
+[node name="IsNearPlayer" type="Node" parent="BeehaveTree/SelectorComposite/Idle/InverterDecorator"]
+script = ExtResource("5_dhj7s")
+
+[node name="ReturnVelocity" type="Node" parent="BeehaveTree/SelectorComposite/Idle"]
+script = ExtResource("10_ic0wd")
+
+[node name="Blackboard" type="Node" parent="."]
+script = ExtResource("9_efkew")
+blackboard = {
+"acceleration": 96.0,
+"target": &"player",
+"targets": []
+}
